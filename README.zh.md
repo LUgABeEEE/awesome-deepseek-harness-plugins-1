@@ -271,6 +271,8 @@ DSH 提供了以层级委派为主的表面与 workflow 组件；子 Agent 接�
 
 ### 近期通过核验的新增 / Recently verified additions
 
+- [dsh-block-ptc](https://github.com/mengwEX/dsh-block-ptc) - 新增独立的 Block PTC 预设：用 `run_code` 描述中的 block ID 标记任务片段，模型可在程序内调用 `block_compact`，以自行撰写的保留内容替换已完成片段在模型上下文中的内容；原始事件仍留在追加式会话日志中。通过 `dsh.bundle` patch 安装，作者报告在 DSH 0.2.1-rc.2 上测试。
+
 - [dsh-global-todo](https://github.com/LUgABeEEE/dsh-global-todo) - 跨会话待办清单：人和 Agent 读写同一份 JSON 文件，每条记录加入时间，可挂文档与地址，一键把待办交给某个对话继续；待办可带步骤（派发时作为编号计划），Agent 标记完成只是声明，需人确认。通过 `dsh.bundle` 清单安装（npm `dsh-global-todo`），声明兼容 DSH 0.2.0-rc.1 至 0.3.0。
 
 - [dsh-temp-note](https://github.com/GuihaiHU/dsh-temp-note) - DSH Web 右侧边栏的临时笔记，支持会话级、工作区级与全局三种范围，浏览器本地自动保存、一键复制，以及用默认模型一键优化为 Markdown 并支持撤销；已在 DSH 0.2.1-rc.2 上验证。
