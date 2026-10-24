@@ -271,7 +271,7 @@ DSH 提供了以层级委派为主的表面与 workflow 组件；子 Agent 接�
 
 ### 近期通过核验的新增 / Recently verified additions
 
-- [dsh-mcp-tools](https://github.com/hxlog/dsh-mcp-tools) - DSH 设置页的 MCP 服务器与工具管理器：添加 streamable-http / stdio 服务器、Postman 式填请求头、一键测连通性，并按工具逐个开关——停用的工具不会注册进模型；通过 `dsh.bundle.patch` 安装（npm `dsh-mcp-tools`），已在 DSH 0.2.1-rc.2 上验证。
+- [dsh-mcp-tools](https://github.com/hxlog/dsh-mcp-tools) - DSH 设置页的 MCP 服务器与工具管理器：添加 streamable-http / stdio 服务器、配置请求头、测试连通性，并逐个开关工具；停用的工具不会注册。通过 `dsh.bundle.patch` 安装（npm `dsh-mcp-tools`），作者报告在 DSH 0.2.1-rc.2 上测试。请求头与环境变量值保存在本地明文状态文件中；当前写入路径未设置限制性文件权限。
 
 - [dsh-plugin-system-notify](https://github.com/DRheEheAMGary/dsh-plugin-system-notify) - 提供 `system_notify` Agent 工具发送桌面通知：Host 将通知排队，经受保护的长轮询路由交给 DSH 客户端，再由 Web Notification API 弹出；桌面窗口优先于浏览器标签。通过 `dsh.bundle` patch 安装；作者报告已在 macOS 和 Windows 测试，Linux 未测试。
 
@@ -380,7 +380,7 @@ DSH 提供了以层级委派为主的表面与 workflow 组件；子 Agent 接�
 
 
 - [dsh-maze](https://github.com/lamost423/dsh-maze) - 执行迷宫：把一场会话的主干路径、折返与失败支路画在同一根时间轴上，配逐步数据轨道（工具调用、Token、上下文压力）、确定性分析（结果与证据、行为信号、上下文构成）与最多五场会话的并排对比；能读会话日志，也能在会话页签里实时渲染。已在 DSH 0.1.5 / 0.1.7 / 0.2.0-rc.2 上验证，当前版本 2.4.0。 / Execution maze for DSH sessions: trajectory on one timeline with per-step data tracks, deterministic analysis and multi-session comparison; verified on DSH 0.1.5 / 0.1.7 / 0.2.0-rc.2.
-- [xerj](https://github.com/xerj-org/xerj#supported-agents) - 本地优先的 Rust 搜索引擎与 MCP 服务器（BM25 全文、向量与混合检索、代码定义查找、Agent 记忆），可索引代码、文档、日志和 PDF。它不是 DSH 插件包：README 给出一段 `cordis.patch.yml` insert 配置，通过官方 `@deepseek-ai/dsh-mcp-client` 以 stdio 方式加载 `xerj mcp`，连接你自行启动的 `xerj` 节点；README 将该 DSH 配置标为未测试。 / Local-first Rust search engine and MCP server loaded through the official `@deepseek-ai/dsh-mcp-client` via a documented `cordis.patch.yml` insert; not a DSH plugin package, and the README marks the DSH setup untested.
+- [xerj-dsh](https://github.com/xerj-org/xerj/tree/main/dsh) - xerj 搜索与记忆 MCP 服务的 DSH profile bundle：`dsh.bundle.patch` 插入官方 `@deepseek-ai/dsh-mcp-client`，通过 stdio 运行 `xerj mcp`，需另行安装二进制并启动 xerj 节点；DSH 配置尚未实测。其 MCP 服务可自动发送仅含查询形状的语料评价，并提供可创建 GitHub PR 或发送报告的反馈工具；设置 `XERJ_DISABLE_FEEDBACK=true` 可关闭发送。
 
 - [dsh-jev-plugin](https://github.com/luobosibing2/dsh-jev-plugin) - 原生 DSH/Cordis TypeSafe Jev 决策支持集成：可选择开启技能与文件选择、监督、共享发现纠正、工具输出筛选、阶段导航及原生单次 workspace-write 提权审批路由。功能默认关闭；启用后的判断会将脱敏任务上下文发送给用户配置的 Jev 或 Luna 端点。 / Native DSH/Cordis TypeSafe Jev decision support; features are opt-in and default off.
 - [dsh-orquestrator](https://github.com/frederico-kluser/dsh-orquestrator) - 为子代理挑选运行模型——附带推理努力度上限与输出 token 上限——在代码层面对 DSH 启动的每一个子代理强制生效，无论由哪个工具启动（子代理工具、workflow 启动的 agent、ralph 轮次、一次性后台任务、agent 团队）；同时自带全局 agent 技能 `orchestrate-subagents`，并在任务页为每个子代理标注所用模型与状态。已在 DSH 0.1.6-alpha.2 上验证。 / Pick the model your subagents run on — with a reasoning-effort ceiling and an output-token cap — enforced in code on every child DSH starts, whichever tool starts it; ships the global `orchestrate-subagents` agent skill and marks each subagent on the task page with model and state. Tested with DSH 0.1.6-alpha.2.
