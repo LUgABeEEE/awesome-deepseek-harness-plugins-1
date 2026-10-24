@@ -271,6 +271,8 @@ DSH 提供了以层级委派为主的表面与 workflow 组件；子 Agent 接�
 
 ### 近期通过核验的新增 / Recently verified additions
 
+- [dsh-mcp-tools](https://github.com/hxlog/dsh-mcp-tools) - DSH 设置页的 MCP 服务器与工具管理器：添加 streamable-http / stdio 服务器、Postman 式填请求头、一键测连通性，并按工具逐个开关——停用的工具不会注册进模型；通过 `dsh.bundle.patch` 安装（npm `dsh-mcp-tools`），已在 DSH 0.2.1-rc.2 上验证。
+
 - [dsh-plugin-system-notify](https://github.com/DRheEheAMGary/dsh-plugin-system-notify) - 提供 `system_notify` Agent 工具发送桌面通知：Host 将通知排队，经受保护的长轮询路由交给 DSH 客户端，再由 Web Notification API 弹出；桌面窗口优先于浏览器标签。通过 `dsh.bundle` patch 安装；作者报告已在 macOS 和 Windows 测试，Linux 未测试。
 
 - [dsh-block-ptc](https://github.com/mengwEX/dsh-block-ptc) - 新增独立的 Block PTC 预设：用 `run_code` 描述中的 block ID 标记任务片段，模型可在程序内调用 `block_compact`，以自行撰写的保留内容替换已完成片段在模型上下文中的内容；原始事件仍留在追加式会话日志中。通过 `dsh.bundle` patch 安装，作者报告在 DSH 0.2.1-rc.2 上测试。
